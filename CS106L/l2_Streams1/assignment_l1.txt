@@ -1,0 +1,7 @@
+input string:"1:30 PM \n 1 hour 20 minute"
+output string:"2:50"
+
+void printEndTime(const string& output){
+//fill this in
+
+}
