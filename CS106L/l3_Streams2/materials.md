@@ -22,17 +22,44 @@
 4. Because of the Fail bit the consecutive `cin`s are frozen and no input is accepted even though buffer has not been extracted. 
 
 **Solution:** 
+
+
     1. Read input string so that it can read whitespaces (except newline) between strings too. We need `getline(cin, my_string)`
     2. Read input integer using our implementation og `getInteger(const string& prompt)` which allows `istringstream iss` unless `iss >> my_integer` produces a Good bit and the next `iss >> trash` (where `trash` is `char` after `my_integer`), produces a Fail bit.
 
 
+### `goodWelcomProgram()` output:   
 
-                
-                What is your name? yang avery
-                What is your age? 20
-                after calling iss 
-                G---
-                inside valid integer logic
-                -FE-
-                name yang avery age 20
-                try again?
+
+            What is your name? yang avery
+            What is your age? 20
+            after calling iss 
+            G---
+            inside valid integer logic
+            -FE-
+            name yang avery age 20
+            try again?
+
+
+### `breakingGetline(const string& input_string_with_newline)` output
+
+            input string: 16.9 
+            24
+            number before newline 16.9
+            number after newline 
+
+
+### `fixBrokenGetline(const string& input_string_with_newline)` 
+`fixBrokenGetline("16.9\n 24")`
+Use two `getline`s consecutively. 
+            
+            getline(iss, my_string);//my_string== ""
+            getline(iss, my_string);//my_string== " 24" //second getline starts after the earlier newline
+            
+Or, ignore `\n` after the first `iss` using `iss.ignore()`
+ 
+            iss.ignore();//pointer stops infront of the whitespace before 24
+            getline(iss, my_string);//my_string== " 24" //second getline starts after the earlier newline       
+
+`iss.ignore()` won't work if the input is `"16.9 \n 24"` instead of `"16.9\n 24"`. Because the after the previous call to `iss` which is `iss >> my_number;`,  `iss` will stop infront of the whitespace before the newline.
+

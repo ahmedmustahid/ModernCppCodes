@@ -14,13 +14,51 @@ void badWelcomeProgram();
 void goodWelcomeProgram();
 int getInteger(const string& prompt);
 void printStateBits(const std::istream& iss);
-
+string breakingGetline(const string& input_string_with_newline);
+string fixBrokenGetline(const string& input_string_with_newline);
 int main(){
 
     //badWelcomeProgram();
-    goodWelcomeProgram();
+    //goodWelcomeProgram();
     //getInteger("enter an integer: ");
+    
+    //cout << breakingGetline("16.9 \n 24")<<endl;
+    cout << fixBrokenGetline("16.9\n 24")<<endl;
     return 0;
+
+}
+
+string breakingGetline(const string& input_string_with_newline){
+
+    cout<<"input string: "<<input_string_with_newline<<"\n";
+    istringstream iss(input_string_with_newline);
+    double my_number;
+    iss >> my_number;
+    cout <<"number before newline "<<my_number<<"\n";
+   
+    string my_string;
+    getline(iss, my_string);
+    cout<<"number after newline \n";
+    return my_string;
+    //int my_another_number;
+    //iss>> my_another_number;
+
+}
+string fixBrokenGetline(const string& input_string_with_newline){
+    
+    cout<<"fix broken string\n "<<"\n";
+    cout<<"input string: "<<input_string_with_newline<<"\n";
+    istringstream iss(input_string_with_newline);
+    double my_number;
+    iss >> my_number;
+    cout <<"number before newline "<<my_number<<"\n";
+   
+    string my_string;
+    iss.ignore();
+    getline(iss, my_string);//my_string== ""
+    //getline(iss, my_string);//my_string== " 24"
+    cout<<"number after newline \n";
+    return my_string;
 
 }
 
