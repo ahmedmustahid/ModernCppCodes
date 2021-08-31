@@ -87,3 +87,6 @@ What is the bug in the following code:
             }
             int main(){
                 int dist = 645;
+                auto [min, max] = findPriceRange(dist);
+                cout <<"You can find price range between "<<min<<" and "<<max;
+            }
