@@ -9,6 +9,16 @@
 
 
 ### `badWelcomProgram()` output:
-            What is your name? yang yang
+            What is your name? yang avery
             What is your age? name yang age 0
             try again? You said:
+
+#### Reasons:
+1. `cin >> name;` reads input `yang` from the total input `yang avery` and stops immediately before the whitespace. 
+2. In the next `cin>>age;`, skips the whitespace and tries to read the integer `age` from the buffer. But what is left inside the buffer is the string `wang` and so, Fail bit is turned on.
+3. Reading a string into an iteger results in garbage value (`0` in this case). 
+4. Because of the Fail bit the consecutive `cin`s are frozen and no input is accepted even though buffer has not been extracted. 
+
+**Solution:** 
+    1. Read input string so that it can read whitespaces (except newline) between strings too. We need `getline(cin, my_string)`
+    2. Read input integer using our implementation og `getInteger(const string& prompt)` which allows `istringstream iss` unless `iss >> my_integer` produces a Good bit and the next `iss >> trash` (where `trash` is `char` after `my_integer`), produces a Fail bit.
