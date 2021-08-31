@@ -63,3 +63,27 @@ Or, ignore `\n` after the first `iss` using `iss.ignore()`
 
 `iss.ignore()` won't work if the input is `"16.9 \n 24"` instead of `"16.9\n 24"`. Because the after the previous call to `iss` which is `iss >> my_number;`,  `iss` will stop infront of the whitespace before the newline.
 
+
+
+### Signed and unsigned int: 
+While indexing the variable must be unisgned int. 
+What is the bug in the following code:
+            
+            string chopBothEnds(const string& mystring){
+                string result="";
+                for (size_t i=0; i< mystring.size(); ++i){
+                    result += mystring[i];
+                }
+                return result;
+            }
+
+
+### Everything in one example:
+
+            pair<int, int> findPriceRange(int dist){
+                int min = static_cast<int> (dist * 0.08);
+                int max = static_cast<int> (dist * 10);
+                return {min, max};
+            }
+            int main(){
+                int dist = 645;
