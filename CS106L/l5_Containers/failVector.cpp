@@ -17,7 +17,7 @@ void accessElemsVector(){
     std::vector<int> vec{5, 6};
     vec[1] = 8 ;
     //vec[2] = 9; //shows no error
-    std::cout << vec.at(2) << std::endl;
+    std::cout << vec.at(2) << std::endl; //shows error
 }
 
 
