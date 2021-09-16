@@ -19,10 +19,10 @@ c. The data structure can be accessed by indexing (Sets/maps/lists can't be inde
 3. Solution to this is to use a template function that will take any data structure and any ``value`` 
                 
                     template <typename Collection, typename DataType>
-                    int count_occurences(const Collection& my_collection, const DataType& my_datatype) {
+                    int count_occurences(const Collection& my_collection, const DataType& my_data) {
                         int count = 0;
                         for (auto iter = my_collection.begin(); iter != my_collection.end() ; ++iter ){
-                            if (*iter == my_datatype ) count++;
+                            if (*iter == my_data ) count++;
                         }
                         return count;
                     }
