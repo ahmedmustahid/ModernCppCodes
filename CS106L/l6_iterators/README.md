@@ -5,6 +5,7 @@
 2. Dereference element: `*it`
 3. Why use ++iter and not iter++? => ++iter returns the value after being incremented, so there’s no need to store the old value of the iterator!
 4. dereferencing a `std::map::iterator` returns a `std::pair`. Iterator of a map corresponds to pair. Incrementing iterator once moves to the next `std::pair`.
+5. Iterator obtained from a container becomes invalid if the elements being iterated over change address or are destroyed. [Iterator invalidation](https://en.cppreference.com/w/cpp/container/vector#Iterator_invalidation)
 
 ### [Types of iterators](https://www.cplusplus.com/reference/iterator/)
 0. All categories

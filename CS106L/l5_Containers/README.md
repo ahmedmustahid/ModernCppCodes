@@ -36,6 +36,6 @@ underlying container is. e.g. `std::stack` and `std::queue` use `std::deque` as 
         // ERROR - not comparable
 
 3. set, map are ordered. They also have their unordered counterparts.
-4. unordered set/map: Instead of a comparison operator, the element (set) or key (map) must have a hash function deﬁned for it. these are generally faster than map/set
+4. unordered set/map: **Instead of a comparison operator**, the element (set) or key (map) must have a hash function deﬁned for it. these are generally faster than map/set
 5. multimap, multiset (+ unordered siblings): multiple of the same element (set) or key (map).
 

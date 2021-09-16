@@ -77,56 +77,22 @@ void checkSet() {
   }
 }
 
-void invalidIterator1(){
+void invalidIterator(){
 
     std::vector<int> my_vector{1, 2, 3, 4, 5};
+    auto end{ my_vector.end()};
 
-    std::cout << "printing vector elements " << std::endl;
-
-    for (const auto& elements: my_vector){
-        
-        std::cout << elements << std::endl;
-    }
-
-
-    auto iter{ my_vector.begin()};
-    
-    ++iter;
-    std::cout << "dereferenced begin iterator " << *iter << "\n";
+    std::cout << "dereferenced end iterator " << *end << "\n";
     my_vector.emplace_back(10);
     
-    std::cout << "dereferenced begin iterator after emplace_back  " << *iter << "\n";
+    std::cout << "dereferenced end iterator after emplace_back  " << *end << "\n";
 
-}
-
-
-
-int invalidIterator2()
-{
-	std::vector v{ 1, 2, 3, 4, 5, 6, 7 };
-
-	auto it{ v.begin() };
-
-	++it; // move to second element
-	std::cout << *it << '\n'; // ok: prints 2
-
-	v.erase(it); // erase the element currently being iterated over
-
-	// erase() invalidates iterators to the erased element (and subsequent elements)
-	// so iterator "it" is now invalidated
-
-	++it; // undefined behavior
-	std::cout << *it << '\n'; // undefined behavior
-
-	return 0;
 }
 
 int main() {
 
   // checkVector();
-  //checkMapIterType();
-  //checkSet();
-  invalidIterator1();
-  //invalidIterator2();
+  checkMapIterType();
+  checkSet();
   return 0;
 }
